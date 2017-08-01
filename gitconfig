@@ -1,0 +1,47 @@
+[core]
+  editor = "subl -w"
+  excludesFile = ~/profile/gitignore
+
+[alias]
+  st = status
+  br = branch -vv
+  co = checkout
+  ci = commit
+  unstash = stash pop
+  r = rebase master
+
+  ll = log --oneline -3
+  llog = log --oneline
+  l = ! git llog --first-parent `git my-base`~2..
+  files = ! git log --name-status --oneline `git my-base`..
+  filesdiff = ! git diff --name-only $(git merge-base HEAD $(git my-base))
+  doc = ! $BROWSER https://git-scm.com/docs/git-$1
+
+  root = rev-parse --show-toplevel
+
+  my-base = ! git show-ref -q origin/HEAD && echo origin/HEAD                   ||  \
+              git rev-parse --abbrev-ref --symbolic-full-name @{u} 2> /dev/null ||  \
+              echo master
+
+[log]
+  decorate = short
+
+[color]
+	ui = auto
+
+[color "branch"]
+  current = red
+  local = bold
+  remote = green
+
+[color "diff"]
+  meta = blue
+[diff]
+  noprefix
+
+[tig]
+  main-view-date = relative
+  blame-view-date = relative
+  line-graphics = utf-8
+  main-view-author = width=7
+  blame-view-author = width=7

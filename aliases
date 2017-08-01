@@ -1,0 +1,74 @@
+alias hg='history | grep'
+alias g=grep
+alias c=cat
+alias x=xargs
+
+alias fixSlowTerminalOpen='sudo rm /private/var/log/asl/*.asl'
+alias stripColor='perl -pe '\''s/\e\[?.*?[\@-~]//g'\'''
+
+alias clean='mvn clean -qq'
+
+alias less='less -R'
+alias json='jq .'
+
+alias cc='pygmentize -f256 -Ostyle=vs -g'
+
+declare -f _pygmentize > /dev/null &&
+  complete -o default -F _pygmentize cc show
+
+alias scp='scp -C'
+
+alias ..='cd ..'
+alias cd..='cd ..'
+
+alias br='git br'
+alias st='git st'
+alias gfr='git fetch; git rebase'
+alias gr='cd `git rev-parse --show-toplevel`'
+# function f() { git fetch -q $* && git br; }
+# alias fr='f && git rebase'
+alias l='git l'
+
+alias gg='git grep -In'
+function gge() { git grep -n "$@" | grep -o '^[^:]\{1,\}:[0-9]*' | xargs e; }
+alias gf='git ls-files'
+alias gfc='git ls-files | xargs ls -d1 --color'
+alias gfg='git ls-files | grep'
+function gfge() { git ls-files | grep "$@" | xargs e; }
+alias blame='tig blame'
+
+if declare -f __git_complete >/dev/null
+then
+  __git_complete br _git_branch
+  __git_complete f _git_fetch
+  __git_complete gg _git_grep
+fi
+
+function highlight() {
+  egrep --color "$*|"
+}
+alias h=highlight
+
+function gen_passwd() {
+  LC_CTYPE=C tr -dc _A-Za-z0-9 < /dev/urandom | head -c${1:-12} | xargs
+}
+
+function set-title() {
+  echo -ne "\e]2;$@\007"
+}
+
+alias sbt='! [ -f ./build.sbt -o -f ./project/Build.scala ] && echo "error: not an sbt project" || sbt -mem 4096'
+
+# aws
+function sshi {
+   instance=$1
+   shift  
+   [ -z "$instance" ] && echo "usage: sshi <instance id> <ssh args>" && return 1
+
+   host=$(aws ec2 describe-instances --instance-ids $instance 2>/dev/null | jq -r .Reservations[0].Instances[0].PrivateDnsName)
+   [ -z "$host" ] && echo "no hostname for instance: $instance" && return 1
+   ssh $host $*
+}
+export -f sshi
+
+
