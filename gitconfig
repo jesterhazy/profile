@@ -23,6 +23,8 @@
               git rev-parse --abbrev-ref --symbolic-full-name @{u} 2> /dev/null ||  \
               echo master
 
+  export = ! git archive --format zip --output "$(basename $(git root)).zip" ${1:-master}
+
 [log]
   decorate = short
 
@@ -38,6 +40,9 @@
   meta = blue
 [diff]
   noprefix
+
+[push]
+  default = simple
 
 [tig]
   main-view-date = relative
