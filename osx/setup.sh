@@ -16,3 +16,6 @@ brew install jq
 brew install maven
 brew install scala
 brew install sbt
+
+mkdir -p " ~/Library/Application Support/Karabiner"
+ln ln -s ~/profile/osx/karabiner-settings.xml ~/Library/Application\ Support/Karabiner/private.xml
