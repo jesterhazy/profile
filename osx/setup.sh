@@ -9,10 +9,11 @@ if [ $? -ne 0 ]; then
 fi
 
 brew update
+brew install gpg
+brew install jq
 brew install git
 brew install tig
 brew install bash-completion
-brew install jq
 brew install maven
 brew install scala
 brew install sbt
