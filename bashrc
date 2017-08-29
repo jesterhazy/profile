@@ -99,9 +99,6 @@ export BLOCK_SIZE=human-readable
 export EDITOR="subl -w"
 export INPUTRC=~/profile/inputrc
 
-export SBT_OPTS="-Dsbt.override.build.repos=true $SBT_OPTS"
-
-
 . ~/profile/aliases
 
 if [ -f ~/bash_local ]; then
