@@ -17,6 +17,7 @@ brew install bash-completion
 brew install maven
 brew install scala
 brew install sbt
+brew cask install sublime-text
 
 mkdir -p " ~/Library/Application Support/Karabiner"
-ln ln -s ~/profile/osx/karabiner-settings.xml ~/Library/Application\ Support/Karabiner/private.xml
+ln -s ~/profile/osx/karabiner-settings.xml ~/Library/Application\ Support/Karabiner/private.xml
