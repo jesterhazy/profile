@@ -93,11 +93,14 @@ export PYTHONDONTWRITEBYTECODE=1
 
 export PATH=$PATH:~/profile/bin
 export BROWSER=send-url.sh
+export PATH="/usr/local/anaconda3/bin:$PATH"
 
 export BLOCK_SIZE=human-readable
 # export EDITOR=/usr/bin/nano
 export EDITOR="subl -w"
 export INPUTRC=~/profile/inputrc
+
+export PS1="\W $ "
 
 . ~/profile/aliases
 

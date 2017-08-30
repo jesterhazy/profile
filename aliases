@@ -57,6 +57,9 @@ function set-title() {
   echo -ne "\e]2;$@\007"
 }
 
+alias conact="source activate"
+alias condeact="source deactivate"
+
 alias sbt='! [ -f ./build.sbt -o -f ./project/Build.scala ] && echo "error: not an sbt project" || sbt -mem 4096'
 
 # aws
