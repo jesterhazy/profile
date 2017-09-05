@@ -501,6 +501,23 @@
                     "identifiers": {
                         "is_keyboard": true,
                         "is_pointing_device": false,
+                        "product_id": 8211,
+                        "vendor_id": 1241
+                    },
+                    "ignore": false,
+                    "simple_modifications": {
+                        "left_command": "left_option",
+                        "left_option": "left_command",
+                        "right_command": "right_option",
+                        "right_option": "right_command"
+                    }
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": {},
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
                         "product_id": 60,
                         "vendor_id": 9494
                     },
